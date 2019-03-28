@@ -63,12 +63,12 @@
 				line-height: 60px;
 			}
 			
-			.self-container .id {
+			.id {
 				font-size: 30px;
 				font-weight: bold;
 			}
 			
-			.self-container .content {
+			.content {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-around;
@@ -91,7 +91,7 @@
 				background-color: #EEEEEE;
 			}
 			
-			.right .head {
+			.head {
 				height: 10%;
 				width: 100%;
 				display: flex;
@@ -102,7 +102,7 @@
 				font-weight: bold;
 			}
 			
-			.right .chat-container {
+			.chat-container {
 				padding: 10px;
 				height: 80%;
 				overflow-y: scroll;
@@ -112,50 +112,46 @@
 			}
 			/*滚动条样式*/
 			
-			.right .chat-container::-webkit-scrollbar {
+			.chat-container::-webkit-scrollbar {
 				/*滚动条整体样式*/
 				width: 8px;
 				/*高宽分别对应横竖滚动条的尺寸*/
 				height: 8px;
 			}
 			
-			.right .chat-container::-webkit-scrollbar-thumb {
+			.chat-container::-webkit-scrollbar-thumb {
 				/*滚动条里面小方块*/
 				border-radius: 2rem;
 				/*-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);*/
 				background-color: #AAAAAA;
 			}
 			
-			.right .chat-container::-webkit-scrollbar-track {
+			.chat-container::-webkit-scrollbar-track {
 				/*滚动条里面轨道*/
 				/*-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);*/
 				border-radius: 2rem;
 				background-color: transparent;
 			}
 			
-			.right .chat-container .message-self,
-			.right .chat-container .message-other {
+			.message-self,
+			.message-other {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
 				padding: 10px;
 				box-sizing: border-box;
 			}
 			
-			.right .chat-container .message-self {
-				width: 100%;
-				display: flex;
-				flex-direction: row;
-				flex-wrap: nowrap;
+			.message-self {
 				justify-content: flex-end;
 			}
 			
-			.right .chat-container .message-other {
-				width: 100%;
-				display: flex;
-				flex-direction: row;
-				flex-wrap: nowrap;
+			.message-other {
 				/*justify-content: flex-start;*/
 			}
 			
-			.right .chat-container .message-container {
+			.message-container {
 				max-width: 80%;
 				/*height: auto;*/
 				display: flex;
@@ -163,51 +159,51 @@
 				/*box-sizing: border-box;*/
 			}
 			
-			.right .chat-container .message-self .message-container .message-content {
+			.message-self .message-content {
 				padding-right: 10px;
 			}
 			
-			.right .chat-container .message-other .message-container .message-content {
+			.message-other .message-content {
 				padding-left: 10px;
 			}
 			
-			.right .chat-container .message-self .message-container .message-content .message {
+			.message-self .message {
 				background-color: blue;
 				color: white;
 			}
 			
-			.right .chat-container .message-other .message-container .message-content .message {
+			.message-other .message {
 				background-color: white;
 				color: black;
 			}
 			
-			.right .chat-container .message-container .message-content .name {
+			.chat-container .name {
 				font-size: 12px;
 				padding: 5px 0;
 				color: #888888;
 			}
 			
-			.right .chat-container .message-self .message-container .message-content .name {
+			.message-self .name {
 				text-align: right;
 			}
 			
-			.right .chat-container .message-other .message-container .message-content .name {
+			.message-other .name {
 				text-align: left;
 			}
 			
-			.right .chat-container .message-container .message-content .message {
+			.message {
 				border-radius: 10px;
 				padding: 10px;
 			}
 			
-			.right .chat-container .message-container .icon img {
+			.message-container .icon img {
 				width: 40px;
 				height: 40px;
 				object-fit: cover;
 				border-radius: 50%;
 			}
 			
-			.right .chat-container .notify-container {
+			.notify-container {
 				width: 100%;
 				height: 50px;
 				display: flex;
@@ -215,7 +211,7 @@
 				align-items: center;
 			}
 			
-			.right .chat-container .notify-container .notify {
+			.notify {
 				border-radius: 10px;
 				padding: 5px 10px;
 				background-color: #999999;
@@ -224,7 +220,11 @@
 				color: white;
 			}
 			
-			.right .input-container {
+			.notify-name {
+				color: blue;
+			}
+			
+			.input-container {
 				width: 100%;
 				height: 10%;
 				display: flex;
@@ -234,13 +234,13 @@
 				font-size: 18px;
 			}
 			
-			.right .input-container .input-content {
+			.input-content {
 				position: relative;
 				width: 85%;
 				background-color: white;
 			}
 			
-			.right .input-container .input-content input {
+			.input-content input {
 				border: 0;
 				padding: 10px;
 				width: 100%;
@@ -251,7 +251,7 @@
 				font-size: 18px;
 			}
 			
-			.right .input-container .input-content .num {
+			.input-content .num {
 				position: absolute;
 				right: 0;
 				top: 0;
@@ -265,11 +265,11 @@
 				color: #333333;
 			}
 			
-			.right .input-container .input-content input::-webkit-input-placeholder {
+			.input-content input::-webkit-input-placeholder {
 				font-size: 18px;
 			}
 			
-			.right .input-container .send {
+			.input-container .send {
 				width: 15%;
 				display: flex;
 				justify-content: center;
@@ -286,62 +286,44 @@
 
 			<!--左侧-->
 			<div class="left">
-
 				<!--头像-->
 				<div class="icon-container">
-
 					<img src="https://i.niupic.com/images/2018/08/10/5yxS.jpg" />
-
 				</div>
 
 				<!--个人简介-->
 				<div class="self-container">
-
 					<div class="id">号码</div>
-
 					<div class="content">
-
 						<!--姓名-->
 						<div class="name">姓名</div>|
-
 						<!--性别-->
 						<div class="gender">男</div>|
-
 						<!--年龄-->
 						<div class="age">32岁</div>
-
 					</div>
-
 				</div>
 
 				<!--聊天室说明-->
 				<div class="note-container"></div>
-
 			</div>
 
 			<!--右侧-->
 			<div class="right">
-
 				<!--顶部固定导航-->
 				<div class="head">聊天室(<span id="count">0</span>)</div>
 
 				<!--聊天记录-->
-				<div class="chat-container">
-
-				</div>
+				<div class="chat-container"></div>
 
 				<!--底部输入框-->
 				<div class="input-container">
-
 					<div class="input-content">
 						<input id="msg" autofocus="autofocus" value="" oninput="inputMessage()" placeholder="请输入聊天内容…" />
 						<div class="num">0/30</div>
 					</div>
-
 					<div class="send" onclick="send()">发送</div>
-
 				</div>
-
 			</div>
 
 		</div>
@@ -424,7 +406,7 @@
 			 * @param {Object} message
 			 */
 			function notify(message) {
-				const notify = '<div class="notify-container"><div class="notify"><span class="name">' + message.name + '</span>' + message.action + '</div></div>';
+				const notify = '<div class="notify-container"><div class="notify"><span class="notify-name">' + message.name + '</span>' + message.action + '</div></div>';
 				$(".chat-container").append(notify);
 				scrollToBottom();
 			}

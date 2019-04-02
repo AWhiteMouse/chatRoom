@@ -76,15 +76,21 @@
 			}
 			
 			.note-container {
-				/*margin: 10px;*/
-				padding: 5px;
+				display: flex;
+				justify-content: center;
+				align-items: baseline;
+				padding: 0 30px;
 				height: 30%;
-				/*border-radius: 10px;*/
-				/*background-color: white;*/
+				font-size: 12px;
+				color: orange;
+			}
+			
+			.note-title {
+				width: 40%;
+				/*text-align: right;*/
 			}
 			
 			.right {
-				/*border-left: 1px solid #888888;*/
 				width: 70%;
 				height: 100%;
 				/*background-image: url(http://p4.so.qhmsg.com/bdr/_240_/t010d7efb6430fb56d9.jpg);*/
@@ -103,34 +109,17 @@
 			}
 			
 			.chat-container {
-				padding: 10px;
 				height: 80%;
 				overflow-y: scroll;
 				background-color: #F5F5F5;
 				background-image: url(http://tool.uixsj.cn/qchan/uploads/2018/08/traffic_a_lot_of_cars_driving_across_the_golden_gate_bridge_free_stock_photos_picjumbo_HNCK2899_2210x1474.jpg);
 				box-sizing: border-box;
 			}
-			/*滚动条样式*/
 			
-			.chat-container::-webkit-scrollbar {
-				/*滚动条整体样式*/
-				width: 8px;
-				/*高宽分别对应横竖滚动条的尺寸*/
-				height: 8px;
-			}
-			
-			.chat-container::-webkit-scrollbar-thumb {
-				/*滚动条里面小方块*/
-				border-radius: 2rem;
-				/*-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);*/
-				background-color: #AAAAAA;
-			}
-			
-			.chat-container::-webkit-scrollbar-track {
-				/*滚动条里面轨道*/
-				/*-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);*/
-				border-radius: 2rem;
-				background-color: transparent;
+			.speaker-name {
+				font-size: 12px;
+				padding: 5px 0;
+				color: #888888;
 			}
 			
 			.message-self,
@@ -147,16 +136,10 @@
 				justify-content: flex-end;
 			}
 			
-			.message-other {
-				/*justify-content: flex-start;*/
-			}
-			
 			.message-container {
 				max-width: 80%;
-				/*height: auto;*/
 				display: flex;
 				flex-direction: row;
-				/*box-sizing: border-box;*/
 			}
 			
 			.message-self .message-content {
@@ -177,17 +160,11 @@
 				color: black;
 			}
 			
-			.chat-container .name {
-				font-size: 12px;
-				padding: 5px 0;
-				color: #888888;
-			}
-			
-			.message-self .name {
+			.message-self .speaker-name {
 				text-align: right;
 			}
 			
-			.message-other .name {
+			.message-other .speaker-name {
 				text-align: left;
 			}
 			
@@ -306,7 +283,10 @@
 				</div>
 
 				<!--聊天室说明-->
-				<div class="note-container"></div>
+				<div class="note-container">
+					<span class="note-title">温馨提示：</span>
+					<span class="note-content">您可以在浏览器上打开两个网页相互聊天。</span>
+				</div>
 			</div>
 
 			<!--右侧-->
@@ -331,6 +311,8 @@
 
 		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 		<script src="http://wulv5.com/js/socket.io.min.js"></script>
+		<!--<script src="jquery.particleground.min.js"></script>
+		<script src="demo.js" ></script>-->
 		<script>
 			// 建立连接
 			const socket = io.connect("/");
@@ -347,7 +329,7 @@
 			// 用户姓名
 			let name = '';
 
-			getName();
+			//			getName();
 
 			// 如果监听到socket消息，那么执行该回调函数，并得到广播消息
 			// 此处的message参数是后台广播的内容
@@ -356,9 +338,9 @@
 				let html = '';
 				//				const container = document.getElementsByClassName("chat-container");
 				if(name == message.name) {
-					html = '<div class="message-self"><div class="message-container"><div class="message-content"><div class="name">' + message.name + '</div><div class="message">' + message.msg + '</div></div><div class="icon"><img src="' + icon + '" /></div></div></div>';
+					html = '<div class="message-self"><div class="message-container"><div class="message-content"><div class="speaker-name">' + message.name + '</div><div class="message">' + message.msg + '</div></div><div class="icon"><img src="' + icon + '" /></div></div></div>';
 				} else {
-					html = '<div class="message-other"><div class="message-container"><div class="icon"><img src="' + icon + '" /></div><div class="message-content"><div class="name">' + message.name + '</div><div class="message">' + message.msg + '</div></div></div></div>';
+					html = '<div class="message-other"><div class="message-container"><div class="icon"><img src="' + icon + '" /></div><div class="message-content"><div class="speaker-name">' + message.name + '</div><div class="message">' + message.msg + '</div></div></div></div>';
 				}
 				$(".chat-container").append(html);
 				scrollToBottom();

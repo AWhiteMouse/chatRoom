@@ -19,7 +19,7 @@ const server = http.createServer(function(request, response) {
 	// response.end("<h1>我是标题2</h1>");
 
 	// 读取文件
-	const html = fs.readFileSync("chatRoom.html");
+	const html = fs.readFileSync("index.html");
 	response.end(html);
 
 });

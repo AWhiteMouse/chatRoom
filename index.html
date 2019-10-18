@@ -34,7 +34,6 @@
 			position: relative;
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
 			align-content: center;
 			width: 30%;
 			height: 100%;
@@ -45,6 +44,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			margin-top: 40px;
 			height: 30%;
 		}
 
@@ -74,7 +74,7 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			height: 30%;
+			height: 20%;
 			line-height: 60px;
 			color: #cadeea;
 		}
@@ -91,18 +91,20 @@
 			font-size: 22px;
 		}
 
-		.note-container {
+		.function-container {
 			display: flex;
-			justify-content: center;
-			align-items: baseline;
+			justify-content: flex-start;
+			align-items: flex-start;
+			flex-wrap: wrap;
 			padding: 0 30px;
-			height: 30%;
-			font-size: 12px;
-			color: orange;
+			color: #617c8f;
 		}
 
-		.note-title {
-			width: 40%;
+		.function-item {
+			margin: 5px;
+			border: 3px solid #333;
+			padding: 5px 15px;
+			background: #fff;
 		}
 
 		.note-help {
@@ -304,9 +306,11 @@
 			</div>
 
 			<!--聊天室说明-->
-			<div class="note-container">
-				<span class="note-title">温馨提示：</span>
-				<span class="note-content">您可以在浏览器上打开两个网页相互聊天。</span>
+			<div class="function-container">
+				<div class="function-item">尬聊模式</div>
+				<div class="function-item">“讲个笑话”</div>
+				<div class="function-item">“歇后语”</div>
+				<div class="function-item">“顺口溜”</div>
 			</div>
 
 			<div class="note-help">
@@ -337,7 +341,6 @@
 	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 	<script src="http://wulv5.com/js/socket.io.min.js"></script>
 	<!-- <script src="jquery.particleground.min.js"></script> -->
-	<!-- <script src="demo.js" ></script> -->
 	<script>
 		// 建立连接
 		const socket = io.connect("/");

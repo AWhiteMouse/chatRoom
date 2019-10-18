@@ -30,10 +30,10 @@ const io = ws(server);
 // 检测连接事件
 io.on("connection", function(socket) {
 
-	console.log("当前有用户连接");
+	// console.log("当前有用户连接");
 	count++;
 	totalCount++;
-	console.log("count:" + count);
+	// console.log("count:" + count);
 
 	let name = '';
 
@@ -53,7 +53,7 @@ io.on("connection", function(socket) {
 	socket.on("join", function(message) {
 		console.log(message);
 		name = message.name;
-		console.log(name + "加入了群聊");
+		// console.log(name + "加入了群聊");
 		socket.broadcast.emit("joinNoticeOther", {
 			name: name,
 			action: "加入了群聊",
@@ -75,7 +75,7 @@ io.on("connection", function(socket) {
 	//	 监听到连接断开
 	socket.on("disconnect", function() {
 		count--;
-		console.log(name + "离开了群聊")
+		// console.log(name + "离开了群聊")
 		io.emit("disconnection", {
 			count: count,
 			name: name

@@ -10,14 +10,16 @@
     "socket.io": "^2.3.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AWhiteMouse/node-chatRoom.git"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "聊天室"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {

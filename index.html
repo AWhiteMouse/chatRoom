@@ -397,10 +397,12 @@
 		 * @param {Object} message
 		 */
 		function notify(message) {
-			const notify = '<div class="notify-container"><div class="notify"><span class="notify-name">' + message.name +
-				'</span>' + message.action + '</div></div>';
-			$(".chat-container").append(notify);
-			scrollToBottom();
+			if (message.name && message.action) {
+				const notify = '<div class="notify-container"><div class="notify"><span class="notify-name">' + message.name +
+					'</span>' + message.action + '</div></div>';
+				$(".chat-container").append(notify);
+				scrollToBottom();
+			}
 		}
 
 		/**

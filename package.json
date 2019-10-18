@@ -1,0 +1,27 @@
+{
+  "name": "node-chatRoom",
+  "version": "1.0.0",
+  "description": "基于NodeJS的在线聊天室",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "socket.io": "^2.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AWhiteMouse/node-chatRoom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AWhiteMouse/node-chatRoom/issues"
+  },
+  "homepage": "https://github.com/AWhiteMouse/node-chatRoom#readme"
+}

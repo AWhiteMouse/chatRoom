@@ -49,10 +49,24 @@
 		}
 
 		.icon-container img {
+			border: 10px solid #333;
 			width: 150px;
 			height: 150px;
 			object-fit: cover;
 			border-radius: 50%;
+		}
+
+		.icon-container img:hover {
+			animation: rotate 2s linear infinite forwards;
+		}
+
+		@keyframes rotate {
+			from {
+				transform: rotate(0);
+			}
+			to {
+				transform: rotate(360deg);
+			}
 		}
 
 		.self-container {
@@ -62,6 +76,7 @@
 			align-items: center;
 			height: 30%;
 			line-height: 60px;
+			color: #cadeea;
 		}
 
 		.id {

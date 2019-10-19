@@ -71,24 +71,13 @@
 
 		.self-container {
 			display: flex;
-			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			height: 20%;
+			height: 15%;
 			line-height: 60px;
+			font-size: 25px;
+			font-weight: 700;
 			color: #cadeea;
-		}
-
-		.id {
-			font-size: 30px;
-			font-weight: bold;
-		}
-
-		.content {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-			font-size: 22px;
 		}
 
 		.function-container {
@@ -103,8 +92,9 @@
 		.function-item {
 			margin: 5px;
 			border: 3px solid #333;
-			padding: 5px 15px;
+			padding: 5px 10px;
 			background: #fff;
+			font-size: 14px;
 		}
 
 		.note-help {
@@ -292,18 +282,7 @@
 			</div>
 
 			<!--个人简介-->
-			<div class="self-container">
-				<div class="id">编号</div>
-				<div class="content">
-					<!--姓名-->
-					<div class="name">姓名</div>
-					<!--<span>|</span>-->
-					<!--性别-->
-					<!--<div class="gender">男</div>|-->
-					<!--年龄-->
-					<!--<div class="age">32岁</div>-->
-				</div>
-			</div>
+			<div class="self-container">姓名</div>
 
 			<!--聊天室说明-->
 			<div class="function-container">
@@ -311,6 +290,9 @@
 				<div class="function-item">“讲个笑话”</div>
 				<div class="function-item">“歇后语”</div>
 				<div class="function-item">“顺口溜”</div>
+				<div class="function-item">“北京天气”</div>
+				<div class="function-item">“名人名言”</div>
+				<div class="function-item">“静夜思”</div>
 			</div>
 
 			<div class="note-help">
@@ -448,7 +430,7 @@
 			if (str) {
 				name = str;
 				console.log(name)
-				$(".self-container .name").text(str);
+				$(".self-container").text(str);
 				const message = {
 					name: name
 				}

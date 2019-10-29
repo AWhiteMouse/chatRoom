@@ -86,3 +86,4 @@ io.on("connection", function(socket) {
 
 // 服务器监听端口
 server.listen(3000);
+console.log('Server has started.\n')

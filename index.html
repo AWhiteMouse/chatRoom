@@ -64,6 +64,7 @@
 			from {
 				transform: rotate(0);
 			}
+
 			to {
 				transform: rotate(360deg);
 			}
@@ -193,6 +194,20 @@
 			border-radius: 50%;
 		}
 
+		.message-table {
+			border-collapse: collapse;
+			border: 2px dashed #aaa;
+		}
+
+		.message-table-th {
+			border-bottom: 2px dashed #aaa;
+			padding: 5px 10px;
+		}
+
+		.message-table-td {
+			padding: 5px 10px;
+		}
+
 		.notify-container {
 			display: flex;
 			justify-content: center;
@@ -306,7 +321,57 @@
 			<div class="head">聊天室(<span id="count">0</span>)</div>
 
 			<!--聊天记录-->
-			<div class="chat-container"></div>
+			<div class="chat-container">
+				<div class="message-other">
+					<div class="message-container">
+						<div class="icon">
+							<img src="http://file06.16sucai.com/2016/0921/2b04bfeb965677fe8c2d5a4dbd292478.jpg" />
+						</div>
+						<div class="message-content">
+							<div class="speaker-name">机器人</div>
+							<div class="message">你好呀，小主人，欢迎来到TAchat。</div>
+						</div>
+					</div>
+				</div>
+				<div class="message-other">
+					<div class="message-container">
+						<div class="icon">
+							<img src="http://file06.16sucai.com/2016/0921/2b04bfeb965677fe8c2d5a4dbd292478.jpg" />
+						</div>
+						<div class="message-content">
+							<div class="speaker-name">机器人</div>
+							<div class="message">
+								<table class="message-table">
+									<tr>
+										<th class="message-table-th">您可尝试输入以下指令：</th>
+									</tr>
+									<tr>
+										<td class="message-table-td">1、讲个笑话</td>
+									</tr>
+									<tr>
+										<td class="message-table-td">2、歇后语</td>
+									</tr>
+									<tr>
+										<td class="message-table-td">3、顺口溜</td>
+									</tr>
+									<tr>
+										<td class="message-table-td">4、xx天气</td>
+									</tr>
+									<tr>
+										<td class="message-table-td">5、名人名言</td>
+									</tr>
+									<tr>
+										<td class="message-table-td">6、诗词</td>
+									</tr>
+									<tr>
+										<td class="message-table-td">……</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<!--底部输入框-->
 			<div class="input-container">
@@ -349,8 +414,7 @@
 		socket.on("message", function (message) {
 			console.log(message)
 			let html = '';
-			//				const container = document.getElementsByClassName("chat-container");
-			if (name == message.name) {
+			if (name === message.name) {
 				html =
 					'<div class="message-self"><div class="message-container"><div class="message-content"><div class="speaker-name">' +
 					message.name + '</div><div class="message">' + message.msg +
@@ -396,7 +460,7 @@
 
 		document.onkeydown = function (event) {
 			var e = event || window.event || arguments.callee.caller.arguments[0];
-			if (e && e.keyCode == 13) { // enter 键
+			if (e && e.keyCode === 13) { // enter 键
 				send();
 			}
 		};

@@ -11,4 +11,5 @@ npm start
 ```
 
 在浏览器中打开[localhost:3000](http://localhost:3000)。如下图：
-![页面截图](https://raw.githubusercontent.com/AWhiteMouse/files/master/imgs/20191018161054.png)
+
+![页面截图](https://raw.githubusercontent.com/AWhiteMouse/files/master/imgs/20191029152714.png)

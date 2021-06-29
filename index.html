@@ -18,7 +18,7 @@
 			height: 100%;
 			overflow: hidden;
 			background-color: #d4f0fc;
-			background-image: url(http://tool.uixsj.cn/qchan/uploads/2018/08/traffic_a_lot_of_cars_driving_across_the_golden_gate_bridge_free_stock_photos_picjumbo_HNCK2899_2210x1474.jpg);
+			background-image: url(http://img.netbian.com/file/2019/1106/440869731fef2d1eb2d6e7c8fa6ee1a9.jpg);
 			background-size: 100% 100%;
 		}
 
@@ -96,6 +96,7 @@
 			padding: 5px 10px;
 			background: #fff;
 			font-size: 14px;
+			cursor: pointer;
 		}
 
 		.note-help {
@@ -108,6 +109,7 @@
 		}
 
 		.right {
+			position: relative;
 			width: 70%;
 			height: 100%;
 			background-color: #eee;
@@ -122,6 +124,15 @@
 			background-color: white;
 			font-size: 22px;
 			font-weight: bold;
+		}
+
+		.head-exit {
+			display: flex;
+			align-items: center;
+			position: absolute;
+			top: 0;
+			right: 25px;
+			height: 10%;
 		}
 
 		.chat-container {
@@ -283,6 +294,7 @@
 			font-weight: bold;
 		}
 	</style>
+	<!-- <link rel="stylesheet" href="./index.css" /> -->
 </head>
 
 <body>
@@ -299,15 +311,9 @@
 			<!--个人简介-->
 			<div class="self-container">姓名</div>
 
-			<!--聊天室说明-->
+			<!--聊天室默认话术集合-->
 			<div class="function-container">
-				<div class="function-item">尬聊模式</div>
-				<div class="function-item">“讲个笑话”</div>
-				<div class="function-item">“歇后语”</div>
-				<div class="function-item">“顺口溜”</div>
-				<div class="function-item">“北京天气”</div>
-				<div class="function-item">“名人名言”</div>
-				<div class="function-item">“静夜思”</div>
+				<!-- 此处通过JS添加默认话术 -->
 			</div>
 
 			<div class="note-help">
@@ -319,6 +325,10 @@
 		<div class="right">
 			<!--顶部固定导航-->
 			<div class="head">聊天室(<span id="count">0</span>)</div>
+
+			<!-- <div class="head-exit">
+				<img src="./static/images/exit.png" />
+			</div> -->
 
 			<!--聊天记录-->
 			<div class="chat-container">
@@ -418,7 +428,20 @@
 		// 用户姓名
 		let name = '';
 
-		getName();
+		// 关键词
+		const keyWords = [
+			"尬聊模式", "讲个笑话", "歇后语", "顺口溜",
+			"北京天气", "名人名言", "静夜思",
+		];
+
+		// 向HTMl中添加默认话术
+		let functionHtml = '';
+		keyWords.forEach(keyWord => {
+			functionHtml += `<div class="function-item" data-word="${keyWord}">${keyWord}</div>`;
+		});
+		$(".function-container").append(functionHtml);
+
+		// getName();
 
 		// 如果监听到socket消息，那么执行该回调函数，并得到广播消息
 		// 此处的message参数是后台广播的内容
@@ -477,8 +500,28 @@
 		};
 
 		/**
+		 * 快捷消息发送
+		 */
+		document.getElementsByClassName('function-container')[0].onclick = function(e) {
+			if (!name) {
+				getName();
+				return;
+			}
+			if (e.target.dataset.word) {
+				// 点击了快捷消息
+				const message = {
+					id,
+					name,
+					msg: e.target.dataset.word,
+				};
+				// 通过socket发送消息
+				socket.send(message);
+			}
+		}
+
+		/**
 		 * 发送系统通知
-		 * 
+		 *
 		 * @param {Object} message
 		 */
 		function notify(message) {
@@ -504,7 +547,6 @@
 			const str = prompt("请输入你的聊天昵称", "");
 			if (str) {
 				name = str;
-				console.log(name)
 				$(".self-container").text(str);
 				const message = {
 					name: name

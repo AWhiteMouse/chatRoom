@@ -2,6 +2,8 @@
 const http = require("http");
 const fs = require("fs");
 const ws = require("socket.io");
+const openUrl = require('./openUrl');
+
 // 当前在线人数
 let count = 0;
 // 总访客人数
@@ -21,7 +23,6 @@ const server = http.createServer(function(request, response) {
 	// 读取文件
 	const html = fs.readFileSync("index.html");
 	response.end(html);
-
 });
 
 // 基于当前web服务器开启socket实例
@@ -85,5 +86,7 @@ io.on("connection", function(socket) {
 });
 
 // 服务器监听端口
-server.listen(3000);
+const port = 3001;
+server.listen(port);
 console.log('Server has started.\n')
+openUrl(`http://localhost:${port}`)

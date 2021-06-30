@@ -2,7 +2,7 @@
   "name": "chat-room",
   "version": "1.0.0",
   "description": "基于NodeJS的在线聊天室",
-  "main": "server.js",
+  "main": "app.js",
   "dependencies": {},
   "devDependencies": {
     "child_process": "^1.0.2",
@@ -11,7 +11,7 @@
     "socket.io": "^2.3.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
